@@ -1,0 +1,60 @@
+{
+  "setting": {},
+  "condition": {
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "id": -1,
+          "name": "文章",
+          "pathName": "pages/article/article",
+          "query": "id=7"
+        },
+        {
+          "id": -1,
+          "name": "评论",
+          "pathName": "pages/commentList/commentList",
+          "query": "id=7"
+        },
+        {
+          "id": -1,
+          "name": "个人中心",
+          "pathName": "pages/center/center",
+          "query": ""
+        },
+        {
+          "id": 3,
+          "name": "列表",
+          "pathName": "pages/collect/collect",
+          "query": ""
+        },
+        {
+          "id": 4,
+          "name": "壁纸",
+          "pathName": "pages/wallpaper/wallpaper",
+          "query": ""
+        },
+        {
+          "name": "评论",
+          "pathName": "pages/commentList/commentList",
+          "query": "id=28&title=%E6%97%A5%E8%90%BD",
+          "scene": null
+        },
+        {
+          "name": "视频",
+          "pathName": "pages/wallpaper/wallpaper",
+          "query": "",
+          "scene": null
+        }
+      ]
+    }
+  }
+}
