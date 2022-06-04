@@ -6,7 +6,7 @@
 <view class="classify fiexd">
   <view class="title-warp fiexd">
     <view class="classify-title">
-      <view wx:for="{{kindList}}" bindtap="changeKinds" data-id="{{item.id}}" wx:key="{{item.id}}" class="class-name {{activeKind == item.id ? 'active' : ''}}">{{item.name}}</view>
+      <view wx:for="{{kindList}}" bindtap="changeKinds" data-id="{{item.id}}" wx:key="{{item.id}}" class="class-name {{1 == item.id ? 'active' : ''}}">{{item.name}}</view>
     </view>
   </view>
   <view class="aritcle-list">
