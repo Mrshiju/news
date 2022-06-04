@@ -8,7 +8,19 @@ Page({
    * 页面的初始数据
    */
   data: {
-    bannerList: "",
+    bannerList: [{
+        cover_img: 'https://s1.tuchong.com/content-image/202104/d07222c0a25a1b839501477542680ade.jpg',
+        article_title: '端午节',
+      },
+      {
+        cover_img: 'https://s1.tuchong.com/content-image/202104/d07222c0a25a1b839501477542680ade.jpg',
+        article_title: '端午节',
+      },
+      {
+        cover_img: 'https://s1.tuchong.com/content-image/202104/d07222c0a25a1b839501477542680ade.jpg',
+        article_title: '端午节',
+      },
+    ],
     kindList: [{
       id: 1,
       name: "新闻"
@@ -32,9 +44,7 @@ Page({
     let data = {
       isBanner: true
     };
-    this.setData({
-      bannerList: []
-    })
+    
     this.changeKind();
 
   },

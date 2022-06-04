@@ -234,7 +234,7 @@ router.post("/addArticle", function (req, res) {
 	//拼接SQL
 
 	let sql =
-		`INSERT INTO article_list (article_title, content ,cover_img,description,home_show) VALUES (?, ?, ?, ?, ?)`
+		`INSERT INTO article_list (article_title, content ,cover_img,description,home_show,comments,praises,create_date,update_date) VALUES (?, ?, ?, ?, ?,0,0,NOW(),NOW())`
 	//判断是否登录用户？
 
 	db.query(sql, [title, content, coverUrl, description, homeShow], function (results, fields) {
@@ -280,7 +280,7 @@ router.post("/updateArticleLike", function (req, res) {
 		like
 	} = req.body;
 	//拼接SQL
-
+	console.log(req.body)
 	let sql =
 		`UPDATE article_list SET praises = ? WHERE id = ?`
 	//判断是否登录用户？
@@ -303,7 +303,9 @@ router.post("/getArticleComment", function (req, res) {
 
 	let sql =
 
-		`SELECT * FROM article_comment WHERE article_id = ?`
+		`SELECT id,article_id,comment_user_id,comment_text,DATE_FORMAT(create_date,"%Y-%m-%d %H:%i:%s") create_date , user_name,avater FROM article_comment
+		WHERE article_id = ?`
+		// (SELECT count(1) FROM article_comment WHERE article_id = ?) commontTotal  FROM article_comment
 	//判断是否登录用户？
 
 	db.query(sql, [id], function (results, fields) {
@@ -326,7 +328,7 @@ router.post("/addArticleComment", function (req, res) {
 	//拼接SQL
 
 	let sql =
-		`INSERT INTO article_comment (article_id, comment_text,user_name,avater) VALUES (?, ?, ?, ?)`
+		`INSERT INTO article_comment (article_id, comment_text,user_name,avater,create_date) VALUES (?, ?, ?, ?,NOW())`
 	//判断是否登录用户？
 
 	db.query(sql, [id, commentText, user_name, avater], function (results, fields) {
@@ -376,7 +378,7 @@ router.post("/addDaily", function (req, res) {
 
 	let sql =
 
-		`INSERT INTO daily (content ,imgUrl, create_date,type) VALUES (?, ?, ?,?)`
+		`INSERT INTO daily (content ,img_url, create_date,type) VALUES (?, ?, ?,?)`
 	//判断是否登录用户？
 
 	db.query(sql, [content, img_url, date, type], function (results, fields) {
@@ -448,7 +450,7 @@ router.post("/updateDaily", function (req, res) {
 		`UPDATE daily SET content = ?, imgUrl = ?, create_date = ? , day = ? , month =?  WHERE id = ?`
 	//判断是否登录用户？
 
-	db.query(sql, [content, img_url, date, id], function (results, fields) {
+	db.query(sql, [content, img_url, date,day,month, id], function (results, fields) {
 		//成功
 		res.json({
 			status: true,

@@ -44,13 +44,12 @@
 
 <view class="form-warp">
   <input type="text" focus="{{focus}}" bindblur="inputBlur" placeholder="{{placeHolder}}" value="{{msg}}"
-    confirm-type="send" bindconfirm="sendComment" />
+    confirm-type="send" bindconfirm="sendComment" bindinput="oninput" />
+  <view bindtap="sendComment">发送</view>
 </view>
 
 
 <!-- 需要使用 button 来授权登录 -->
-<block wx:if="userInfo">
-
-  <button wx:if="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">授权登录</button>
-  <view wx:else>请升级微信版本</view>
-</block>
+<view wx:if="{{canIUse}}">
+  <button wx:if="{{canIUse}}" style="display: {{canIUse ? 'block' : 'none'}};" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">授权登录</button>
+</view>

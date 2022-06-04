@@ -177,3 +177,13 @@
   border-radius: 6rpx;
   padding: 0 20rpx;
 }
+.form-warp{
+  display: flex;
+  justify-content: space-between;
+}
+.form-warp input{
+  flex: 1;
+}
+.form-warp view{
+  width: 90rpx;
+}

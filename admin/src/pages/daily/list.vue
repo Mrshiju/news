@@ -47,7 +47,7 @@ export default {
       articleList: [],
       total: 0,
       page: 1,
-      pageSize: 10
+      pageSize: 9999
     };
   },
   mounted() {

@@ -53,6 +53,12 @@
           "pathName": "pages/wallpaper/wallpaper",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "pages/commentList/commentList",
+          "pathName": "pages/commentList/commentList",
+          "query": "id=35&title=klblkcjlk%20",
+          "scene": null
         }
       ]
     }

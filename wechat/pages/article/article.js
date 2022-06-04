@@ -66,12 +66,12 @@ Page({
   addPraise(e) {
     let data = {
       id: this.data.id,
-      like:this.data.articleDetail.praises++
+      like:this.data.articleDetail.praises *1 +1
     }
     severRequest("addPraise", data).then(res => {
       
       this.setData({
-        ['articleDetail.praises']: this.data.articleDetail.praises++,
+        ['articleDetail.praises']: this.data.articleDetail.praises*1+1,
       })
       wxToast(res.msg);
     })
