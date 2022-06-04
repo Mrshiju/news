@@ -29,11 +29,11 @@
       <image src='../../assets/icons/comment.png'></image>
       {{articleDetail.comments}}
     </navigator>
-    <!-- <view class="tool">
-      <button open-type='share'></button>
-      <image src='../../assets/icons/share.png'></image>
+    <view class="tool">
+      <button bindtap="onShoucan"></button>
+      <image src='../../assets/icons/views_gray.png'></image>
       {{articleDetail.shares}}
-    </view> -->
+    </view>
   </view>
 </view>
 <login-toast wx:if="{{!isLogin}}" bind:loginSuccess="login"></login-toast>

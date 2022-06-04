@@ -131,8 +131,7 @@ Page({
     this.param = {
       id: this.data.articleId,
       commentText: text,
-      user_name: this.data.userInfo.nickName || '微信用户',
-      avater: this.data.userInfo.avatarUrl || 'https://thirdwx.qlogo.cn/mmopen/vi_32/DdwGRgUBxJqxiciaPLgUJwYQP5u7eOE7Apmvfq9Pu9Gx4mu2Lzc6ria9n1Yqlfc8KBwicZoSLG8Vy0DvPdSEDD9DSg/132'
+    
     }
   },
   /**
@@ -168,6 +167,11 @@ Page({
        title: '请先授权',
      })
       return;
+    }
+    this.param = {
+      ...this.param,
+      user_name: this.data.userInfo.nickName || '微信用户',
+      avater: this.data.userInfo.avatarUrl || 'https://thirdwx.qlogo.cn/mmopen/vi_32/DdwGRgUBxJqxiciaPLgUJwYQP5u7eOE7Apmvfq9Pu9Gx4mu2Lzc6ria9n1Yqlfc8KBwicZoSLG8Vy0DvPdSEDD9DSg/132'
     }
     severRequest("addArticleComment", this.param).then(res => {
       this.getComments();

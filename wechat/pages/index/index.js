@@ -48,6 +48,7 @@ Page({
     this.changeKind();
 
   },
+ 
   // 切换分类时获取分类数据
   changeKind(e) {
 

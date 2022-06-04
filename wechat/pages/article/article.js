@@ -66,17 +66,31 @@ Page({
   addPraise(e) {
     let data = {
       id: this.data.id,
-      like:this.data.articleDetail.praises *1 +1
+      like: this.data.articleDetail.praises * 1 + 1
     }
     severRequest("addPraise", data).then(res => {
-      
+
       this.setData({
-        ['articleDetail.praises']: this.data.articleDetail.praises*1+1,
+        ['articleDetail.praises']: this.data.articleDetail.praises * 1 + 1,
       })
       wxToast(res.msg);
     })
 
 
+  },
+  // 收藏
+  onShoucan() {
+    let data = {
+      id: this.data.id,
+      like: this.data.articleDetail.shares * 1 + 1
+    }
+    severRequest("addShares", data).then(res => {
+
+      this.setData({
+        ['articleDetail.shares']: this.data.articleDetail.shares * 1 + 1,
+      })
+      wxToast(res.msg);
+    })
   },
   // 监听页面滚动
   onPageScroll(e) {

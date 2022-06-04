@@ -2,6 +2,10 @@
 <template wx:if="{{loading}}" is="page-loading" />
 <view class="comment-list">
   <view class="comment-title"> 评论列表（{{commentList.length}}）</view>
+  <!-- 需要使用 button 来授权登录 -->
+<view wx:if="{{canIUse}}">
+  <button wx:if="{{canIUse}}" style="display: {{canIUse ? 'block' : 'none'}};" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">授权登录</button>
+</view>
   <view class="msg-item" wx:for="{{commentList}}" wx:key="comment">
     <!--  评论用户头像  -->
     <image class="avatar" src="{{item.avater}}"></image>
@@ -49,7 +53,3 @@
 </view>
 
 
-<!-- 需要使用 button 来授权登录 -->
-<view wx:if="{{canIUse}}">
-  <button wx:if="{{canIUse}}" style="display: {{canIUse ? 'block' : 'none'}};" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">授权登录</button>
-</view>

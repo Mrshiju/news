@@ -459,6 +459,27 @@ router.post("/updateDaily", function (req, res) {
 		});
 	});
 });
+// 收藏
+router.post("/addArticleShare", function (req, res) {
+	let {
+		id,
+		like
+	} = req.body;
+	//拼接SQL
+	console.log(req.body)
+	let sql =
+		`UPDATE article_list SET shares = ? WHERE id = ?`
+	//判断是否登录用户？
+
+	db.query(sql, [like, id], function (results, fields) {
+		//成功
+		res.json({
+			status: true,
+			msg: "success!",
+			data: results,
+		});
+	});
+});
 
 
 

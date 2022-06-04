@@ -23,8 +23,8 @@ const api = {
   getCommentArticle: "/api/user/getCommentArticle", // 获取用户收藏问文章
   // 文章相关
   addPraise: "/admin/index/updateArticleLike", // 点赞
-  addArticleComment: "/admin/index/addArticleComment" // 添加评论
-
+  addArticleComment: "/admin/index/addArticleComment", // 添加评论
+  addShares:"/admin/index/addArticleShare"              // 收藏
 
 }
 
