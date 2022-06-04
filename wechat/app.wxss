@@ -142,3 +142,10 @@ navigator:hover {
   text-align: center;
   padding-top: 10rpx;
 }
+
+/* 粘性布局 */
+.fiexd{
+  position: sticky;
+  z-index: 99;
+  top: 0;
+}

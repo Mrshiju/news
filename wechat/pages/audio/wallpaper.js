@@ -14,11 +14,22 @@ Page({
     total: 0,
     activeIndex: 0,
     page: 1,
-    pageSize: 5,
+    pageSize: 1000,
     addData: "",
     getMore: true,
     loadText: "正在加载",
     loading: true,
+    fixed: false,
+    kindList: [{
+      id: 1,
+      name: "新闻"
+    }, {
+      id: 2,
+      name: "视频"
+    }, {
+      id: 3,
+      name: "音乐"
+    }],
   },
 
   /**
@@ -26,6 +37,25 @@ Page({
    */
   onLoad: function(options) {
     this.getData();
+  },
+  changeKinds(e) {
+    if (e) {
+      this.setData({
+        activeKind: e.target.dataset.id
+      })
+    }
+    let id = e.target.dataset.id
+    switch (id) {
+      case 2:
+        wx.switchTab({
+          url: '/pages/wallpaper/wallpaper',
+        })
+        break;
+      case 1:
+        wx.switchTab({
+          url: '/pages/index/index',
+        })
+    }
   },
   getData() {
     let params = {
@@ -51,7 +81,7 @@ Page({
       }
       severRequest("getDailyList", params).then(res => {
         // 获取数据为空，不再请求
-        if (res.data.data.length == 0) {
+        if (res.data.length == 0) {
           this.setData({
             getMore: false,
             loadText: "没有更多了"
@@ -59,9 +89,9 @@ Page({
         } else {
           this.setData({
             page: this.data.page + 1,
-            addData: res.data.data,
-            wallpaperList: res.data.data.concat(this.data.wallpaperList),
-            activeIndex: res.data.data.length
+            addData: res.data,
+            wallpaperList: res.data.concat(this.data.wallpaperList),
+            activeIndex: res.data.length
           })
         }
       })

@@ -1,18 +1,11 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/center/center",
-    "pages/hot/hot",
-    "pages/home/home",
-    "pages/classify/classify",
-    "pages/credits/credits",
     "pages/commentList/commentList",
     "pages/article/article",
     "pages/wallpaper/wallpaper",
     "pages/collect/collect",
     "pages/commentArticle/commentArticle",
-    "pages/aboutWxApp/aboutWxApp",
-    "pages/aboutDeveloper/aboutDeveloper",
     "pages/audio/wallpaper"
   ],
   "window": {
@@ -34,15 +27,9 @@
       },
       {
         "pagePath": "pages/wallpaper/wallpaper",
-        "text": "视频",
+        "text": "音频",
         "iconPath": "/assets/icons/image.png",
         "selectedIconPath": "/assets/icons/image_active.png"
-      },
-      {
-        "pagePath": "pages/audio/wallpaper",
-        "text": "音乐",
-        "iconPath": "/assets/icons/center.png",
-        "selectedIconPath": "/assets/icons/center_active.png"
       }
     ]
   },

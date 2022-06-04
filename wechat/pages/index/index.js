@@ -9,7 +9,16 @@ Page({
    */
   data: {
     bannerList: "",
-    kindList: "",
+    kindList: [{
+      id: 1,
+      name: "新闻"
+    }, {
+      id: 2,
+      name: "视频"
+    }, {
+      id: 3,
+      name: "音乐"
+    }],
     activeKind: 1,
     articleList: "",
     fixed: false,
@@ -26,18 +35,8 @@ Page({
     this.setData({
       bannerList: []
     })
-    // severRequest("getBanner", data).then(res => {
-    //   this.setData({
-    //     bannerList: res.data
-    //   })
-    // })
-    // 获取分类列表数据
-    severRequest("getKindList").then(res => {
-      this.setData({
-        kindList: res.data
-      })
-      this.changeKind();
-    })
+    this.changeKind();
+
   },
   // 切换分类时获取分类数据
   changeKind(e) {
@@ -68,7 +67,7 @@ Page({
         })
         break;
       case 3:
-        wx.switchTab({
+        wx.navigateTo({
           url: '/pages/audio/wallpaper',
         })
     }

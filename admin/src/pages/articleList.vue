@@ -8,17 +8,17 @@
       <el-table :data="articleList" border>
         <el-table-column type="index" label="序号" width="60" align="center"></el-table-column>
         <el-table-column label="ID" prop="id" width="120" sortable align="center"></el-table-column>
-        <!-- <el-table-column label="封面" width="200" align="center">
+        <el-table-column label="封面" width="200" align="center">
           <template slot-scope="scope">
-            <img class="cover-img" :src="scope.row.coverImg" alt="">
+            <img class="cover-img" :src="scope.row.cover_img" alt="">
           </template>
-        </el-table-column> -->
+        </el-table-column>
         <el-table-column label="标题" width="200" prop="article_title" align="center"></el-table-column>
         <el-table-column label="描述" prop="description" align="center"></el-table-column>
         <el-table-column label="分类" width="120" sortable prop="kind_id" align="center"></el-table-column>
         <el-table-column label="banner" width="120" sortable prop="home_show" align="center">
           <template slot-scope="scope">
-            {{scope.row.home_show ? '是' : '否'}}
+            {{ scope.row.home_show ? '是' : '否' }}
           </template>
         </el-table-column>
         <!-- <el-table-column label="内容" align="center">
@@ -38,7 +38,8 @@
           </template>
         </el-table-column>
       </el-table>
-      <el-pagination class="page" background layout="prev, pager, next" @current-change="changePage" :total="total" :current-page="page" :page-size="pageSize"></el-pagination>
+      <el-pagination class="page" background layout="prev, pager, next" @current-change="changePage" :total="total"
+        :current-page="page" :page-size="pageSize"></el-pagination>
     </div>
   </div>
 </template>
@@ -100,7 +101,7 @@ export default {
             }
           });
         })
-        .catch(() => {});
+        .catch(() => { });
     }
   }
 };
@@ -111,13 +112,16 @@ export default {
   height: 100px;
   width: auto;
 }
+
 .content {
   height: 90px;
   overflow: hidden;
+
   img {
     max-height: 100px;
   }
 }
+
 .page {
   margin: 10px 0;
 }

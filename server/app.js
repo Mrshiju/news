@@ -9,23 +9,6 @@ var cors = require('cors');
 
 var index = require('./routes/index');
 
-let order = require('./routes/mall/order');
-let user = require('./routes/mall/user');
-let address = require('./routes/mall/address');
-let goods = require('./routes/mall/goods');
-let cart = require('./routes/mall/cart');
-let userUpload = require('./routes/mall/upload');
-let PCCT = require('./routes/mall/PCCT');
-let collection = require('./routes/mall/collection');
-
-let role = require('./routes/admin/role');
-let menu = require('./routes/admin/menu');
-let admin = require('./routes/admin/admin');
-let category = require('./routes/admin/category');
-let adminGoods = require('./routes/admin/goods');
-let adminUpload = require('./routes/admin/upload');
-let adminOrder = require('./routes/admin/order');
-let icon = require('./routes/admin/icon');
 let article = require('./routes/admin/article');
 var app = express();
 

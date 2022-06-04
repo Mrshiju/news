@@ -14,11 +14,22 @@ Page({
     total: 0,
     activeIndex: 0,
     page: 1,
-    pageSize: 5,
+    pageSize: 100000,
     addData: "",
     getMore: true,
     loadText: "正在加载",
     loading: true,
+    fixed: false,
+    kindList: [{
+      id: 1,
+      name: "新闻"
+    }, {
+      id: 2,
+      name: "视频"
+    }, {
+      id: 3,
+      name: "音乐"
+    }],
   },
 
   /**
@@ -26,6 +37,25 @@ Page({
    */
   onLoad: function(options) {
     this.getData();
+  },
+  changeKinds(e) {
+    if (e) {
+      this.setData({
+        activeKind: e.target.dataset.id
+      })
+    }
+    let id = e.target.dataset.id
+    switch (id) {
+      case 1:
+        wx.switchTab({
+          url: '/pages/index/index',
+        })
+        break;
+      case 3:
+        wx.navigateTo({
+          url: '/pages/audio/wallpaper',
+        })
+    }
   },
   getData() {
     let params = {

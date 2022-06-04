@@ -105,14 +105,14 @@ export default {
           };
           if (!this.id) {
             addDaily(params).then(res => {
-              if (res.errno == 0) {
+              if (res.status) {
                 this.$message.success(res.errmsg);
                 this.$router.go(-1);
               }
             });
           } else {
             updateDaily(params).then(res => {
-              if (res.errno == 0) {
+              if (res.status) {
                 this.$message.success(res.errmsg);
                 this.$router.go(-1);
               }

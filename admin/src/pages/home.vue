@@ -22,11 +22,11 @@
         <el-submenu index="/dailyAdd">
           <template slot="title">
             <i class="el-icon-location"></i>
-            <span>视频管理</span>
+            <span>音频管理</span>
           </template>
           <el-menu-item-group>
-            <el-menu-item index="/dailyList">视频列表</el-menu-item>
-            <el-menu-item index="/dailyAdd">添加视频</el-menu-item>
+            <el-menu-item index="/dailyList">音频列表</el-menu-item>
+            <el-menu-item index="/dailyAdd">添加音频</el-menu-item>
           </el-menu-item-group>
         </el-submenu>
         <!-- <el-menu-item index="/aboutWxApp">

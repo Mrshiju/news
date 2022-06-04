@@ -1,12 +1,24 @@
 <import src="/templates/loading.wxml" />
 <template wx:if="{{loading}}" is="page-loading" />
 <view wx:else class="item">
+  <view class="classify fiexd{{ fixed ? 'addPadding' : ''}}">
+    <view class="title-warp {{ fixed ? 'fixed' : ''}}">
+      <view class="classify-title">
+        <view wx:for="{{kindList}}" bindtap="changeKinds" data-id="{{item.id}}" wx:key="{{item.id}}"
+          class="class-name {{3== item.id ? 'active' : ''}}">{{item.name}}</view>
+      </view>
+    </view>
+  </view>
   <!-- <view class="load-text">{{loadText}}</view>
   <view class="right-load-text">没有更多了</view> -->
   <view wx:for="{{wallpaperList}}" wx:key="{{item.id}}">
-    <audio class="img" src="{{item.img_url}}" mode='aspectFill'></audio>
-    <audio poster="{{poster}}" name="{{name}}" author="{{item.content}}" src="{{src}}" id="myAudio" controls loop></audio>
-    <!-- <view class="text-wrap">
+    <block wx:if="{{item.type == 2}}">
+
+      <!-- <audio class="img" src="{{item.img_url}}" mode='aspectFill'></audio> -->
+      <audio poster="{{item.poster}}" name="{{item.from}}" author="{{item.content}}" src="{{item.imgUrl}}" id="myAudio"
+        controls loop></audio>
+      <!-- <view class="text-wrap">
+
       <view class="date">
         <text class="day">{{item.day}}/</text>
         <text class="month">{{item.month}}.{{item.year}}</text>
@@ -17,5 +29,8 @@
         <text>{{item.from}}</text>
       </view>
     </view> -->
+    </block>
+
   </view>
+
 </view>

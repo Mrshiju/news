@@ -43,7 +43,8 @@
         <el-row>
           <el-col :span="24">
             <el-form-item label="文章内容">
-              <quill-editor @getContent="getContent" :articleContent="formData.content"></quill-editor>
+              <!-- <quill-editor @getContent="getContent" :articleContent="formData.content"></quill-editor> -->
+              <el-input type="textarea" autosize :rows="3" v-model="formData.content" maxlength="99999990"></el-input>
             </el-form-item>
           </el-col>
         </el-row>

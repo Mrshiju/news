@@ -13,7 +13,11 @@
         </el-table-column>
         <el-table-column label="视频" width="160" sortable  align="center">
           <template slot-scope="scope">
-            <video :src="scope.row.img_url" controls>
+
+            <video controls  v-if="scope.row.type==2" :src="scope.row.imgUrl">
+             <source :src="scope.row.imgUrl" type="audio/mpeg">
+            </video>
+            <video v-else :src="scope.row.imgUrl" controls>
               不支持 video 标签
             </video>
           </template>

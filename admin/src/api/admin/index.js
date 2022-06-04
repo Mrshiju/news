@@ -14,6 +14,20 @@ export const getKey = params => {
   })
 }
 
+// 上传视频
+export const uploadVideo = params => {
+  let config = {
+    url: "/admin/index/video",
+    method: "POST",
+    data: params
+  }
+  return http(config).then(res => {
+    return res.data;
+  }).catch(err => {
+    return err;
+  })
+}
+
 // 登录
 export const login = params => {
   let config = {

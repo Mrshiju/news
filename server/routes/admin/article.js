@@ -3,6 +3,8 @@ const fs = require('fs');
 const multer = require('multer');
 const sharp = require('sharp');
 const uuidv1 = require('uuid/v1');
+const pathLib = require('path');
+
 let db = require('../../config/mysql');
 const jwt = require('express-jwt');
 const {
@@ -195,38 +197,29 @@ router.post("/video", upload.single('file'), async function (req, res) {
 	let {
 		mimetype,
 		size,
-		originalname
+		originalname,
+		fieldname,
+		path,
+		buffer
 	} = req.file;
-	// console.log(req.file, 'req.file');
 	// return;
-	let fileName = originalname; // 破茧.mp3
+	// 获取当前目录
+	let result = await fs.writeFile('public/images/goods/' + originalname, buffer, 'buffer', (err, res) => {
+		if (res) {
+			console.log(res)
+		}
+		if (err) return console.error(err);
+	});
+	// 获取host
+	let host = req.headers.host;
+	let img_url = 'http://' + host + '/images/goods/' + originalname;
+	console.log(img_url, 'host');
+	res.json({
+		status: true,
+		msg: "视频上传成功!",
+		src: img_url
 
-	try {
-		// 存储一份音乐的路径，这里我们在music文件夹里面存放音乐资源
-		let mp3Url = './images/' + fileName
-		// fs.statSync判断目录文件是否存在，不存在就会抛出异常，所以需要try catch捕获一下
-		let stat = fs.statSync(mp3Url)
-		// 设置请求头
-		res.writeHead(200, { // 有的话，就把对应的资源以流的形式返回去
-			'Content-Type': 'video/flv', // 类型为音频mp3格式
-			'Server': 'Microsoft-IIS/7.5',
-			'X-Powered-By': 'ASP.NET',
-			"Accept-Ranges": "bytes" // 不加的话，前端google浏览器中音频无法拖动
-		})
-		//创建可读流
-		let readStream = fs.createReadStream(mp3Url)
-		// 将读取的结果以管道pipe流的方式返回给前端
-		readStream.pipe(res);
-		res.json({
-			status: true,
-			msg: "视频上传处理成功!",
-			src: readStream
-		});
-	} catch (error) {
-		console.log(error);
-		// 读取不到相应文件，就直接返回找不到即可
-		res.send('暂无此音乐数据')
-	}
+	});
 });
 
 // 添加文章
@@ -386,7 +379,7 @@ router.post("/addDaily", function (req, res) {
 		`INSERT INTO daily (content ,imgUrl, create_date,type) VALUES (?, ?, ?,?)`
 	//判断是否登录用户？
 
-	db.query(sql, [content, img_url, date,type], function (results, fields) {
+	db.query(sql, [content, img_url, date, type], function (results, fields) {
 		//成功
 		res.json({
 			status: true,
